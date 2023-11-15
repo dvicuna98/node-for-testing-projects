@@ -1,0 +1,26 @@
+version: '3.5'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /app
+    container_name: node-testing
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./:/app
+    ports:
+      - "80:3000"
+      - "${APP_PORT:-8080}:8080"
+      - "${APP_PORT_VITE:-5173}:5173"
+    networks:
+      - node-testing-net
+      - cte-with-vpn
+
+networks:
+  cte-with-vpn:
+    external:
+      name: ctdesarrollo-with-vpn
+  node-testing-net:
