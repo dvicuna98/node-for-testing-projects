@@ -3,17 +3,101 @@ defineProps<{
   msg: string
 }>()
 
+// window.addEventListener("chatwoot:ready", function () {
+//   console.log('ready')
+//   // window.$chatwoot.setCustomAttributes({
+//   //   hash: "bb55f5c5-67c6-4ca9-8050-ac6b2979c6f3",
+//   // });
+//
+//   console.log(window.$chatwoot)
+// });
+// console.log(window.$chatwoot)
+
+console.log(window.$chatwoot)
+//
+// window.$chatwoot.reset();
+//
+window.addEventListener("chatwoot:on-message", function (e) {
+  console.log("chatwoot:on-message", e);
+
+  console.log(window.$chatwoot)
+
+  // window.$chatwoot.setConversationCustomAttributes({
+  //   area_abbreviation: 'FE',
+  //   product_abbreviation: "GADE",
+  //   matomo_hash: "123456789-789456123-93682741"
+  // });
+
+
+});
+
+window.addEventListener("chatwoot:on-start-conversation", function (e) {
+  console.log(e)
+
+  console.log("dios estas ahi?");
+
+  if(e.detail.hasConversation) {
+    window.$chatwoot.reset()
+
+    //Aqui te se abre el modal de seleccion de area y programa :)
+  }
+
+  console.log("aqui estoy");
+});
+
+window.addEventListener("chatwoot:ready", function (e) {
+  console.log("dios estas ahi?");
+
+  console.log("no");
+});
+
+window.addEventListener("chatwoot:on-resolved", function (e) {
+  console.log("chatwoot:on-resolved", e);
+  // window.$chatwoot.reset();
+});
+//
+// window.addEventListener('load', function () {
+//   console.log("It's loaded!")
+//   // let hola = document.querySelectorAll(".header-wrap")
+//   //
+//   // console.log(hola);
+//
+//   let test = document.getElementById("chatwoot_live_chat_widget")
+//
+//   console.log(test)
+// })
+
+// window.$chatwoot.setCustomAttributes({
+//   product_abbreviation: "bb55f5c5-67c6-4ca9-8050-ac6b2979c6f3",
+// });
+
+
+
 function setGade(){
   console.log('gade')
+  window.$chatwoot.setConversationCustomAttributes({
+    area_abbreviation: 'FE',
+    product_abbreviation: "FPMME",
+    matomo_hash:"456789132",
+    furriel_hash:"test_hash"
+  });
+
   window.$chatwoot.setCustomAttributes({
-    program: "GADE",
+    country: "EC",
   });
 }
 
 function setGND(){
-  console.log('gade')
+  console.log('GND')
+  window.$chatwoot.setConversationCustomAttributes({
+    area_abbreviation: 'FE',
+    product_abbreviation: "GND",
+    matomo_hash:"456789132",
+    furriel_hash:"test_hash"
+  });
+
   window.$chatwoot.setCustomAttributes({
-    program: "GND",
+    country: "EC",
   });
 }
 </script>

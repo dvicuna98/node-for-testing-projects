@@ -13,8 +13,10 @@ services:
       - ./:/app
     ports:
       - "80:3000"
-      - "${APP_PORT:-8080}:8080"
+      - "${APP_PORT:-8081}:80"
       - "${APP_PORT_VITE:-5173}:5173"
+    extra_hosts:
+      - docker-chatwoot.com:172.18.0.4
     networks:
       - node-testing-net
       - cte-with-vpn
